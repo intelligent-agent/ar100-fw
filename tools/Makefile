@@ -5,3 +5,4 @@
 
 tools-y += load
 tools-y += test
+tools-y += test_memory

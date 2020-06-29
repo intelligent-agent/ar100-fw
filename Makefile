@@ -37,7 +37,8 @@ COMMON_CFLAGS	 = -Os -pipe -std=c11 \
 		   -Werror=strict-prototypes \
 		   -Werror=undef \
 		   -Werror=vla \
-		   -Wno-missing-field-initializers
+		   -Wno-missing-field-initializers \
+			 -lm
 COMMON_CPPFLAGS	 = -I$(OBJ)/include \
 		   -I$(SRC)/platform/$(CONFIG_PLATFORM)/include \
 		   -I$(SRC)/arch/$(CONFIG_ARCH)/include \

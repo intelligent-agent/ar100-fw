@@ -31,5 +31,5 @@ enum {
 };
 
 extern const struct simple_device r_pio;
-
+extern const struct simple_device pio;
 #endif /* DRIVERS_GPIO_SUNXI_GPIO_H */
