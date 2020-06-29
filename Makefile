@@ -129,6 +129,7 @@ distclean:
 html: $(OBJ)/docs
 
 scp: $(TGT)/scp.bin
+	truncate -s %8 $(TGT)/scp.bin
 
 tools: $(tools-all)
 

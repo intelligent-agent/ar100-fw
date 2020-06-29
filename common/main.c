@@ -20,28 +20,12 @@ noreturn void main(uint32_t exception);
 noreturn void
 main(uint32_t exception)
 {
-	static const struct gpio_handle pins[] = {
-      {
+	struct gpio_handle pin = {
 				.dev   = &pio.dev,
-				.id    = SUNXI_GPIO_PIN(4, 14),
-				.drive = DRIVE_10mA,
+				.id    = SUNXI_GPIO_PIN(4, 0),
+				.drive = DRIVE_40mA,
 				.mode  = 1,
 				.pull  = PULL_UP,
-      },
-       {
- 				.dev   = &pio.dev,
- 				.id    = SUNXI_GPIO_PIN(4, 0),
- 				.drive = DRIVE_10mA,
- 				.mode  = 1,
- 				.pull  = PULL_UP,
- 	     },
-       {
-  				.dev   = &pio.dev,
-  				.id    = SUNXI_GPIO_PIN(4, 8),
-  				.drive = DRIVE_10mA,
-  				.mode  = 1,
-  				.pull  = PULL_UP,
-  	   }
   };
 	int err;
 	uint32_t pin_state, wait_cycles;
@@ -55,8 +39,9 @@ main(uint32_t exception)
 
 	css_init();
 
-  for(int i=0; i<3; i++){
-    if ((err = gpio_get(&pins[i]))){
+  for(int i=0; i<16; i++){
+		pin.id = SUNXI_GPIO_PIN(4, i);
+    if ((err = gpio_get(&pin))){
       error("Could not get pin \n");
     }
   }
